@@ -38,6 +38,15 @@ exports.add = (req, res ,next) => {
 };
 
 exports.updateById = (req, res , next) => {
+    Sale
+        .updateOne({ _id: new ObjectId(req.params.id)} , req.body ,{new:true})
+        .exec((err, data) => {
+            if (err) {
+                res.status(400).json(err);
+            } else {
+                res.status(200).json(data);
+            }
+        })
 
 };
 exports.deleteById = (req, res , next) => {
