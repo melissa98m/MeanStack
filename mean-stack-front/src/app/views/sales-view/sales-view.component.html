@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-12">
+    <h2 class="text-center mb-4">Toutes les ventes</h2>
+    <table class="table table-striped shadow">
+      <thead class="table-dark">
+      <tr>
+        <td scope="col">ID</td>
+        <td scope="col">Date</td>
+        <td scope="col">Lieux</td>
+        <td scope="col">Code promo?</td>
+        <td scope="col">Méthode d'achats</td>
+        <td scope="col">Action</td>
+      </tr>
+
+      </thead>
+      <tbody>
+      <tr *ngFor="let sale of sales">
+        <td scope="col">{{ sale.id }}</td>
+        <td scope="col">{{ sale.saleDate | date }}</td>
+        <td scope="col">{{ sale.storeLocation}}</td>
+        <td scope="col text-center">{{ sale.couponUsed ? '✅' : '❌'}}</td>
+        <td scope="col">{{ sale.purchaseMethod}}</td>
+        <td scope="col">
+          <button class="btn btn-primary rounded mr-2">Modifier</button>
+          <button  (click)="onclickDelete(sale.id)" class="btn btn-danger rounded mr-2">Supprimer</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
