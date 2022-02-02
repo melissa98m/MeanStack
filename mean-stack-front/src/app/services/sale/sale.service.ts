@@ -37,16 +37,36 @@ export class SaleService {
         }
       );
   }
+  /**
+   * Method for get a  sale by his id on the DB
+   * @param id
+   */
+  getSaleById(id: string): Promise<any> {
+    return new Promise(
+      (res, rej) => {
+        this.http
+          .get(ApiService.saleUrl() + id)
+          .subscribe(
+            (sale) => {
+              console.log(sale);
+              res(Sale.fromJSON(sale));
+            },
+            err => {
+              console.error(err);
+              rej(err);
+            }
+          )
+      }
+    );
+  }
 
   /**
    * Method for add a new sale on the DB
    * @param sale
    */
   addSale(sale: any) {
-
     return new Promise(
       (res, rej) => {
-
         const headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
         this.http
@@ -67,27 +87,6 @@ export class SaleService {
 
   }
 
-  /**
-   * Method for get a  sale by his id on the DB
-   * @param id
-   */
-  getSaleById(id: string): Promise<any> {
-    return new Promise(
-      (res, rej) => {
-        this.http
-          .get(ApiService.saleUrl() + id)
-          .subscribe(
-            (sale) => {
-              res(Sale.fromJSON(sale));
-            },
-            err => {
-              console.error(err);
-              rej(err);
-            }
-          )
-      }
-    );
-  }
   /**
    * Method for modify a  sale by his id on the DB
    * @param id
