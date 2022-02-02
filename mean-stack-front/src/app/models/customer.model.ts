@@ -1,9 +1,9 @@
 export class Customer {
 
   private _gender: string;
-  private _age: number;
+  private _age: number | undefined;
   private _email: string;
-  private _satisfaction: number;
+  private _satisfaction: number | undefined;
 
   constructor(gender: string, age: number, email: string, satisfaction: number) {
     this._gender = gender;
@@ -21,7 +21,7 @@ export class Customer {
   }
 
   get age(): number {
-    return this._age;
+    return <number>this._age;
   }
 
   set age(value: number) {
@@ -37,7 +37,7 @@ export class Customer {
   }
 
   get satisfaction(): number {
-    return this._satisfaction;
+    return <number>this._satisfaction;
   }
 
   set satisfaction(value: number) {
@@ -51,5 +51,14 @@ export class Customer {
       data.email,
       data.satisfaction
     );
+  }
+  toJSON(): any {
+    return {
+      gender: this.gender,
+      age: this.age,
+      email: this.email,
+      satisfaction: this.satisfaction
+    }
+
   }
 }
