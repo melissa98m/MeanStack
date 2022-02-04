@@ -19,7 +19,7 @@ export class SaleCreatorViewComponent implements OnInit {
   constructor(private saleService: SaleService ,public formBuilder: FormBuilder,
               private router: Router) {
     this. newSaleForm = this.formBuilder.group({
-      saleDate: ['', [Validators.required, Validators.pattern(/^(0[1-9]|1[012])\/(0[1-9]|1[012])\/\d{4}$/)]],
+      saleDate: ['', [Validators.required, Validators.pattern(/^(0[1-9]|[1-2][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/)]],
       storeLocation: ['', Validators.required],
       customer: this.formBuilder.group({
         gender: ['', Validators.required],
@@ -41,7 +41,7 @@ export class SaleCreatorViewComponent implements OnInit {
     console.log(this.sale.saleDate)
     this.saleService.addSale(this.sale.toJSON())
       .then(() => {
-        this.router.navigate(['/'])
+        this.router.navigate(['sales'])
       })
 
 

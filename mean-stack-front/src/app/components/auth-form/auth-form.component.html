@@ -1,0 +1,28 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="authForm">
+  <label>Votre email</label>
+  <input type="email"
+         class="form-control"
+         placeholder="Votre Email"
+         formControlName="email"
+         [(ngModel)]="user.email" autofocus/>
+  <div
+    class="text-danger"
+    *ngIf="(authForm.controls.email.dirty || authForm.controls.email.touched)
+              && authForm.controls.email.invalid">
+    Vous devez renseigner votre email.
+  </div>
+  <br>
+  <label>Votre mot de passe</label>
+  <input type="password"
+         class="form-control"
+         placeholder="Votre mot de passe"
+         formControlName="password"
+         [(ngModel)]="user.password"/>
+  <div
+    class="text-danger"
+    *ngIf="(authForm.controls.password.dirty || authForm.controls.password.touched)
+              && authForm.controls.password.invalid">
+    Vous devez renseigner votre mot de passe.
+  </div>
+  <button class="btn btn-lg btn-dark btn-block mt-4">{{ label }}</button>
+</form>

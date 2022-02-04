@@ -19,8 +19,10 @@ export class SaleService {
 
   //Methode for get all sales off the db
   getAll(): void {
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', ApiService.token);
     this.http
-      .get(ApiService.salesUrl())
+      .get(ApiService.salesUrl() , {headers})
       .pipe(
         map((res: any) => {
           return res.map((item: any) => Sale.fromJSON(item))
@@ -44,8 +46,10 @@ export class SaleService {
   getSaleById(id: string): Promise<any> {
     return new Promise(
       (res, rej) => {
+        let headers = new HttpHeaders();
+        headers = headers.append('Authorization', ApiService.token);
         this.http
-          .get(ApiService.saleUrl() + id)
+          .get(ApiService.saleUrl() + id , {headers})
           .subscribe(
             (sale) => {
               console.log(sale);
@@ -67,8 +71,9 @@ export class SaleService {
   addSale(sale: any) {
     return new Promise(
       (res, rej) => {
-        const headers = new HttpHeaders();
-        headers.append('Content-Type', 'application/json');
+        let headers = new HttpHeaders();
+        headers = headers.append('Authorization', ApiService.token);
+        headers = headers.append('Content-Type', 'application/json');
         this.http
           .post(ApiService.saleUrl(), sale, {headers})
           .subscribe(
@@ -84,7 +89,6 @@ export class SaleService {
 
       }
     );
-
   }
 
   /**
@@ -95,7 +99,8 @@ export class SaleService {
   editSaleById(id: string , editSale:any): Promise<any> {
     return new Promise(
       (res, rej) => {
-        const headers = new HttpHeaders();
+        let headers = new HttpHeaders();
+        headers = headers.append('Authorization', ApiService.token);
         headers.append('Content-Type', 'application/json');
         this.http
           .put(ApiService.saleUrl() + id, editSale,  {headers})
@@ -109,7 +114,6 @@ export class SaleService {
               rej(err);
             }
           )
-
       }
     );
   }

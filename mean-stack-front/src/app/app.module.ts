@@ -12,6 +12,10 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { SaleEditorViewComponent } from './views/sale-editor-view/sale-editor-view.component';
 import { SaleViewComponent } from './views/sale-view/sale-view.component';
+import { LoginViewComponent } from './views/login-view/login-view.component';
+import {AuthService} from "./services/auth/auth.service";
+import { RegisterViewComponent } from './views/register-view/register-view.component';
+import { AuthFormComponent } from './components/auth-form/auth-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,10 @@ import { SaleViewComponent } from './views/sale-view/sale-view.component';
     SalesViewComponent,
     SaleCreatorViewComponent,
     SaleEditorViewComponent,
-    SaleViewComponent
+    SaleViewComponent,
+    LoginViewComponent,
+    RegisterViewComponent,
+    AuthFormComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,7 @@ import { SaleViewComponent } from './views/sale-view/sale-view.component';
     ReactiveFormsModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [SaleService ],
+  providers: [SaleService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

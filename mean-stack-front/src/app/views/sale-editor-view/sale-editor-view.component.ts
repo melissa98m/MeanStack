@@ -48,7 +48,7 @@ export class SaleEditorViewComponent implements OnInit {
   private initForm(): void {
 
     this.EditSaleForm = this.formBuilder.group({
-      saleDate: [this.formattedDate(new Date(this.sale.saleDate)), [Validators.required, Validators.pattern(/^(0[1-9]|1[012])\/(0[1-9]|1[012])\/\d{4}$/)]],
+      saleDate: [this.formattedDate(new Date(this.sale.saleDate)), [Validators.required, Validators.pattern(/^(0[1-9]|[1-2][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/)]],
       storeLocation: ['', Validators.required],
       customer: this.formBuilder.group({
         gender: ['', Validators.required],
@@ -72,7 +72,7 @@ export class SaleEditorViewComponent implements OnInit {
     this.sale.items = undefined ;
     this.saleService.editSaleById(this.sale.id, this.sale.toJSON())
       .then(() => {
-        this.router.navigate(['/']);
+        this.router.navigate(['sales']);
       })
 
   }
