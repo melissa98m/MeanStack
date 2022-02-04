@@ -59,7 +59,7 @@ exports.register = (req, res, next) => {
 
         res.status(200).json({
             user: user,
-            token: 'JWT ' + generateToken({
+            token: 'JWT: ' + generateToken({
                 _id: user._id,
                 email: user.email,
                 password: user.password

@@ -4,7 +4,7 @@ const express = require('express'),
     isAuth = require('../../config/passport').checkIsAuth
 
 module.exports = (app) => {
-    salesRoutes.get('/sales',SaleController.getAll);
+    salesRoutes.get('/sales',isAuth, SaleController.getAll);
     app.use('/', salesRoutes)
 
 };

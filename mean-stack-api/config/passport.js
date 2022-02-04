@@ -17,7 +17,7 @@ module.exports.localStrategy = new LocalStrategy({usernameField: 'email'}, (user
         }
 
         if(!user) {
-            return done(null, false, {errorMsg: 'Il semblerait que la combinaison ne soit pas correcte.'});
+            return done(null, false, {errorMsg: 'Identifiant incorrects!'});
         }
 
         user.comparePassword(password, (err, isMatch) => {
@@ -27,7 +27,7 @@ module.exports.localStrategy = new LocalStrategy({usernameField: 'email'}, (user
             }
 
             if(!isMatch) {
-                return done(null, false, {errorMsg: 'Il semblerait que la combinaison ne soit pas correcte.'});
+                return done(null, false, {errorMsg: 'Identifiant Incorrects!'});
             }
 
             return done(null, user);
