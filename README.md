@@ -15,7 +15,10 @@ Afin de pouvoir exécuter l'application sur votre poste, vous devez d'aborder in
   * Angular cli
   
 Installation
-
+## Installation
+Cloner le repository 
+ * git clone "https://github.com/melissa98m/MeanStack.git"
+ 
 ## Exécution
 
 1. Ouvrir une invite de commande à la racine du projet
@@ -26,7 +29,11 @@ Si le backend est exécuté en local :
  
 Puis :
 4. Ouvrir un navigateur à l'adresse [http://localhost:8081/register](http://localhost/login)
-Démarrage
+
+Démarrage 
+## Démarrage
+* ng serve 
+* ng serve -open pour l'ouvrir directement dans le navigateur 
 
 
 Auteur : @melissa98m
