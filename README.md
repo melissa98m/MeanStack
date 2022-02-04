@@ -32,8 +32,8 @@ Puis :
 
 Démarrage 
 ## Démarrage
-* ng serve 
-* ng serve -open pour l'ouvrir directement dans le navigateur 
+*  `ng serve`
+* `ng serve -open` pour l'ouvrir directement dans le navigateur 
 
 
 Auteur : @melissa98m
